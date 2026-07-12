@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://repo1.maven.org/maven2" 
+        }
+
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.1.+') {
+             changing = true
+        }
+    }
+}
+
+apply plugin: 'forge'
+apply plugin: 'idea'
+
+
+sourceCompatibility = targetCompatibility = "1.8"
+compileJava { sourceCompatibility = targetCompatibility = "1.8" }
+
+version = "1.7.10-0.1-ALPHA"
+group= "src.SCIntegrations" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+base.archivesName.set("SignalCraft-Integrations")
+
+minecraft {
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "run"
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+    flatDir {
+        dirs "lib"
+    }
+    maven {
+        url = "https://www.cursemaven.com"
+    }
+}
+
+dependencies {
+	// `implementation` will compile it and run with `runClient`/`runServer`
+    // `compileOnly will only compile but not load in dev testing (can still put in the instance mods directory though)
+
+    // quality of life line to simplify importing jars for experimental testing
+    // compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'signalcraft:SignalCraft:1.7.10-0.2-ALPHA'
+}
+
+runClient {
+    if( project.hasProperty('mcUsername') ) {
+        args "--username=${project.mcUsername}"
+    }
+}
+
+idea
+{
+	module
+	{
+		inheritOutputDirs = true
+	}
+}
