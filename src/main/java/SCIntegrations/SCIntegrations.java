@@ -1,10 +1,15 @@
 package SCIntegrations;
 
+import SCIntegrations.projred.core.Integration;
 import SCIntegrations.proxy.CommonProxy;
 import cpw.mods.fml.common.network.simpleimpl.*;
 import cpw.mods.fml.common.*;
 import cpw.mods.fml.common.network.*;
 import cpw.mods.fml.common.event.*;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import signalcraft.SignalCraft;
 
 @Mod(modid = "SCIntegrations", version = "1.7.10-0.1-ALPHA", name = "SignalCraft-Integrations", dependencies = "required-after:signalcraft@[1.7.10-0.1-ALPHA,)")
 public class SCIntegrations
@@ -19,6 +24,9 @@ public class SCIntegrations
 
     public static final SimpleNetworkWrapper SCIntegrationsNet;
     public static final String[] Devs = {"Petsox", "tpeterka1", "Breeko", "hajdam"};
+
+    public static CreativeTabs tabIntegrations;
+
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent event) {
 
@@ -26,7 +34,14 @@ public class SCIntegrations
 
     @Mod.EventHandler
     public void Init(final FMLInitializationEvent event) {
+        if (signalcraft.integration.Mods.integrationCreativeTabNeeded()) {
+            tabIntegrations = new CreativeTabs(SignalCraft.MOD_ID + "_integrations") {
+                @Override
+                public Item getTabIconItem() { return Item.getItemFromBlock(Blocks.web); }
+            };
+        }
 
+        Integration.registerIntegrations();
     }
 
     @Mod.EventHandler
