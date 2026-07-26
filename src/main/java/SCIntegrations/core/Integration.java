@@ -1,4 +1,4 @@
-package SCIntegrations.projred.core;
+package SCIntegrations.core;
 
 import SCIntegrations.projred.bundledController.BlockBundledController;
 import SCIntegrations.projred.bundledController.ItemBlockBundledController;

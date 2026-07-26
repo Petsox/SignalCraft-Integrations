@@ -55,7 +55,7 @@ dependencies {
 
     // quality of life line to simplify importing jars for experimental testing
     // compile fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'signalcraft:SignalCraft:1.7.10-0.2-ALPHA'
+    implementation 'signalcraft:SignalCraft:1.7.10-0.6-ALPHA'
 }
 
 runClient {

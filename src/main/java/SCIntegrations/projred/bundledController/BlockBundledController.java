@@ -1,6 +1,7 @@
 package SCIntegrations.projred.bundledController;
 
 import SCIntegrations.SCIntegrations;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,7 +34,13 @@ public class BlockBundledController extends BlockController {
         if (world.isRemote) {
             return true;
         }
-        final SPacketEditorOpen thePacket = new SPacketEditorOpen((TileController) world.getTileEntity(x, y, z));
+        final TileEntity tileE = world.getTileEntity(x, y, z);
+        if (!(tileE instanceof TileController) || ((TileController) tileE).getGuiId() == null) {
+            FMLLog.severe("SCIntegrations: BlockBundledController.openGui found no valid TileBundledController (with a set GuiID) at %d, %d, %d - tile was: %s",
+                    x, y, z, tileE);
+            return true;
+        }
+        final SPacketEditorOpen thePacket = new SPacketEditorOpen((TileController) tileE);
         try {
             final List<Object> list = new LinkedList<>();
             SignalCraft.proxy.packetPipeline.encode(thePacket, list);

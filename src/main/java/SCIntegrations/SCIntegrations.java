@@ -1,6 +1,7 @@
 package SCIntegrations;
 
-import SCIntegrations.projred.core.Integration;
+import SCIntegrations.core.Integration;
+import SCIntegrations.core.Mods;
 import SCIntegrations.proxy.CommonProxy;
 import cpw.mods.fml.common.network.simpleimpl.*;
 import cpw.mods.fml.common.*;
@@ -18,7 +19,7 @@ public class SCIntegrations
     public static SCIntegrations instance;
     public static final String name = "SignalCraft-Integrations";
     public static final String MOD_ID = "SCIntegrations";
-    //I need to find out if I can use Proxy from the main mod, or if I need to make a new one for this mod. I think I can use the main mod's proxy, but I need to check.
+
     @SidedProxy(clientSide = "SCIntegrations.proxy.ClientProxy", serverSide = "SCIntegrations.proxy.CommonProxy")
     public static CommonProxy proxy;
 
@@ -29,12 +30,12 @@ public class SCIntegrations
 
     @Mod.EventHandler
     public void preInit(final FMLPreInitializationEvent event) {
-
+        proxy.preInit(event);
     }
 
     @Mod.EventHandler
     public void Init(final FMLInitializationEvent event) {
-        if (signalcraft.integration.Mods.integrationCreativeTabNeeded()) {
+        if (Mods.integrationCreativeTabNeeded()) {
             tabIntegrations = new CreativeTabs(SignalCraft.MOD_ID + "_integrations") {
                 @Override
                 public Item getTabIconItem() { return Item.getItemFromBlock(Blocks.web); }
@@ -42,11 +43,12 @@ public class SCIntegrations
         }
 
         Integration.registerIntegrations();
+        proxy.init(event);
     }
 
     @Mod.EventHandler
     public void postInit(final FMLPostInitializationEvent event) {
-
+        proxy.postInit(event);
     }
 
     static {

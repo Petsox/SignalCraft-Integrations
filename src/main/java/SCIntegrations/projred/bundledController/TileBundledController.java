@@ -1,12 +1,12 @@
 package SCIntegrations.projred.bundledController;
 
+import SCIntegrations.core.Consts;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import signalcraft.entities.controllers.TileController;
 import signalcraft.entities.controllers.signals.ISignalReceiver;
 import signalcraft.entities.controllers.signals.lightSignals.ILightSignalsController;
-import signalcraft.signalUtils.Consts;
 import signalcraft.signalUtils.SignalState;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class TileBundledController extends TileController implements ILightSigna
 
     public TileBundledController() {
         super(TEXTURE);
-        this.setGuiId(Consts.GuiIDs.BUNDLED_CONTROLLER);
+        this.setGuiId(Consts.BUNDLED_CONTROLLER);
         this.setName("Controller");
     }
 
@@ -61,7 +61,7 @@ public class TileBundledController extends TileController implements ILightSigna
             if (tile instanceof ISignalReceiver) {
                 ISignalReceiver receiver = (ISignalReceiver) tile;
                 if (Arrays.asList(receiver.getValidStatesForSignal()).contains(newState)) {
-                    receiver.setStateOnSignal(newState);
+                    receiver.setState(newState);
                 }
             }
         });
@@ -71,7 +71,7 @@ public class TileBundledController extends TileController implements ILightSigna
         this.getPairings().forEach((pairing, id) -> {
             TileEntity tile = worldObj.getTileEntity(pairing.getX(), pairing.getY(), pairing.getZ());
             if (tile instanceof ISignalReceiver) {
-                ((ISignalReceiver) tile).setStateOnSignalToMostRestrictive();
+                ((ISignalReceiver) tile).setStateToSignalsMostRestrictive();
             }
         });
     }

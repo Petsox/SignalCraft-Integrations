@@ -1,4 +1,4 @@
-package SCIntegrations.projred.core;
+package SCIntegrations.core;
 
 import cpw.mods.fml.common.Loader;
 
