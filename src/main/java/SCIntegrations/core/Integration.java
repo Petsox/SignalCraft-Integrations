@@ -18,10 +18,11 @@ public class Integration {
     public static void registerIntegrations() {
 
         if (Mods.isLoaded(Mods.ModsEnum.ProjectRed)){
-            GameRegistry.registerTileEntity(TileBundledController.class, "BundledControllerInt");
+            //Bundled Controller
+            GameRegistry.registerTileEntity(TileBundledController.class, "BundledController");
             ClientRegistry.bindTileEntitySpecialRenderer(TileBundledController.class, new TileControllerRenderer(new TileBundledController()));
 
-            BlockBundledController bundledController = new BlockBundledController("BundledControllerInt");
+            BlockBundledController bundledController = new BlockBundledController("BundledController");
             GameRegistry.registerBlock(bundledController, ItemBlockBundledController.class, bundledController.getUnlocalizedName());
             MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(bundledController), new ControllerItemRenderer(new TileBundledController()));
         }
