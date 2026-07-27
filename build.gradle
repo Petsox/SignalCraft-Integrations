@@ -27,7 +27,7 @@ apply plugin: 'idea'
 sourceCompatibility = targetCompatibility = "1.8"
 compileJava { sourceCompatibility = targetCompatibility = "1.8" }
 
-version = "1.7.10-0.1-ALPHA"
+version = mod_version
 group= "src.SCIntegrations" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base.archivesName.set("SignalCraft-Integrations")
 
@@ -56,6 +56,10 @@ dependencies {
     // quality of life line to simplify importing jars for experimental testing
     // compile fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'signalcraft:SignalCraft:1.7.10-0.6-ALPHA'
+
+    implementation 'mrtjp:ProjectRed-1.7.10-4.7.0pre12.95-dev'
+    implementation 'mrtjp:MrTJPCore-1.1.0.33-dev'
+    implementation 'codechicken:ForgeMultipart-1.7.2-dev'
 }
 
 runClient {

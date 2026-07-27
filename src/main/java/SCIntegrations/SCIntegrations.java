@@ -12,9 +12,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import signalcraft.SignalCraft;
 
-@Mod(modid = "SCIntegrations", version = "1.7.10-0.1-ALPHA", name = "SignalCraft-Integrations", dependencies = "required-after:signalcraft@[1.7.10-0.1-ALPHA,)")
-public class SCIntegrations
-{
+@Mod(modid = "SCIntegrations", name = "SignalCraft-Integrations", dependencies = "required-after:signalcraft@[1.7.10-0.6-ALPHA,)")
+public class SCIntegrations {
     @Mod.Instance("SCIntegrations")
     public static SCIntegrations instance;
     public static final String name = "SignalCraft-Integrations";
@@ -23,7 +22,6 @@ public class SCIntegrations
     @SidedProxy(clientSide = "SCIntegrations.proxy.ClientProxy", serverSide = "SCIntegrations.proxy.CommonProxy")
     public static CommonProxy proxy;
 
-    public static final SimpleNetworkWrapper SCIntegrationsNet;
     public static final String[] Devs = {"Petsox", "tpeterka1", "Breeko", "hajdam"};
 
     public static CreativeTabs tabIntegrations;
@@ -38,7 +36,9 @@ public class SCIntegrations
         if (Mods.integrationCreativeTabNeeded()) {
             tabIntegrations = new CreativeTabs(SignalCraft.MOD_ID + "_integrations") {
                 @Override
-                public Item getTabIconItem() { return Item.getItemFromBlock(Blocks.web); }
+                public Item getTabIconItem() {
+                    return Item.getItemFromBlock(Blocks.web);
+                }
             };
         }
 
@@ -49,9 +49,5 @@ public class SCIntegrations
     @Mod.EventHandler
     public void postInit(final FMLPostInitializationEvent event) {
         proxy.postInit(event);
-    }
-
-    static {
-        SCIntegrationsNet = NetworkRegistry.INSTANCE.newSimpleChannel("SCIntegrationsNet");
     }
 }

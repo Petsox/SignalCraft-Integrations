@@ -1,6 +1,8 @@
 package SCIntegrations.projred.bundledController;
 
-import SCIntegrations.core.Consts;
+import SCIntegrations.core.ConstsInt;
+import mrtjp.projectred.api.IBundledTile;
+import mrtjp.projectred.api.ProjectRedAPI;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -11,7 +13,7 @@ import signalcraft.signalUtils.SignalState;
 
 import java.util.Arrays;
 
-public class TileBundledController extends TileController implements ILightSignalsController {
+public class TileBundledController extends TileController implements ILightSignalsController, IBundledTile {
 
     private final byte[] currentSignal = new byte[16];
     private int[] signalStates = new int[16];
@@ -19,15 +21,35 @@ public class TileBundledController extends TileController implements ILightSigna
 
     public TileBundledController() {
         super(TEXTURE);
-        this.setGuiId(Consts.BUNDLED_CONTROLLER);
+        this.setGuiId(ConstsInt.BUNDLED_CONTROLLER.guiId);
         this.setName("Controller");
     }
 
     public void onNeighborUpdate() {
-
+        checkBundledInput();
     }
 
+    private void checkBundledInput() {
+        byte[] merged = new byte[16];
+        boolean anyConnected = false;
 
+        for (int side = 0; side < 6; side++) {
+            byte[] input = ProjectRedAPI.transmissionAPI
+                    .getBundledInput(worldObj, xCoord, yCoord, zCoord, side);
+
+            if (input == null) continue;
+            anyConnected = true;
+
+            for (int i = 0; i < 16; i++) {
+                int strength = Math.max(merged[i] & 0xFF, input[i] & 0xFF);
+                merged[i] = (byte) strength;
+            }
+        }
+
+        if (anyConnected) {
+            onBundledSignalChanged(merged);
+        }
+    }
 
     public int[] getSignalStates() {
         return signalStates;
@@ -50,8 +72,8 @@ public class TileBundledController extends TileController implements ILightSigna
 
 
     private void applyStateChange(int stateIndex) {
-            SignalState state = SignalState.fromInteger(signalStates[stateIndex]);
-            changeStateOnAll(state);
+        SignalState state = SignalState.fromInteger(signalStates[stateIndex]);
+        changeStateOnAll(state);
     }
 
 
@@ -83,10 +105,22 @@ public class TileBundledController extends TileController implements ILightSigna
     }
 
     @Override
+    public boolean canConnectBundled(int side) {
+        return true;
+    }
+
+    @Override
+    public byte[] getBundledSignal(int side) {
+        // controller does not emit bundled signal (input-only)
+        return new byte[16];
+    }
+
+    @Override
     public void writeToNBT(NBTTagCompound tag) {
         super.writeToNBT(tag);
         tag.setString("Name", this.getName());
         tag.setIntArray("signalStates", signalStates);
+        tag.setByteArray("currentSignal", currentSignal);
     }
 
     @Override
@@ -101,6 +135,12 @@ public class TileBundledController extends TileController implements ILightSigna
                 } else {
                     signalStates = Arrays.copyOf(stored, 16);
                 }
+            }
+        }
+        if (tag.hasKey("currentSignal")) {
+            byte[] stored = tag.getByteArray("currentSignal");
+            if (stored != null && stored.length == 16) {
+                System.arraycopy(stored, 0, currentSignal, 0, 16);
             }
         }
     }

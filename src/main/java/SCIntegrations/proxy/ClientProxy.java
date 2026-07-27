@@ -1,6 +1,6 @@
 package SCIntegrations.proxy;
 
-import SCIntegrations.core.Consts;
+import SCIntegrations.core.ConstsInt;
 import SCIntegrations.core.Mods;
 import SCIntegrations.projred.bundledController.GuiBundledController;
 import SCIntegrations.projred.bundledController.TileBundledController;
@@ -16,7 +16,7 @@ public class ClientProxy extends CommonProxy {
         if (Mods.isLoaded(Mods.ModsEnum.ProjectRed)) {
             SCGuis.register(
                     "BUNDLED_CONTROLLER_GUI",
-                    Consts.BUNDLED_CONTROLLER,
+                    ConstsInt.BUNDLED_CONTROLLER.guiId,
                     TileBundledController::new,
                     tile -> new GuiBundledController((TileBundledController) tile)
             );
