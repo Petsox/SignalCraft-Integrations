@@ -2,7 +2,7 @@ package SCIntegrations.core;
 
 import signalcraft.signalUtils.Consts;
 
-public enum ConstsInt {
+public enum GuiConsts {
 
     BUNDLED_CONTROLLER,
     BUNDLED_UNIVERSAL_CONTROLLER,

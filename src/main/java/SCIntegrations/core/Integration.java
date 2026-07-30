@@ -3,6 +3,9 @@ package SCIntegrations.core;
 import SCIntegrations.projred.bundledController.BlockBundledController;
 import SCIntegrations.projred.bundledController.ItemBlockBundledController;
 import SCIntegrations.projred.bundledController.TileBundledController;
+import SCIntegrations.projred.bundledReceiver.BlockBundledReceiver;
+import SCIntegrations.projred.bundledReceiver.ItemBlockBundledReceiver;
+import SCIntegrations.projred.bundledReceiver.TileBundledReceiver;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
@@ -25,6 +28,14 @@ public class Integration {
             BlockBundledController bundledController = new BlockBundledController("BundledController");
             GameRegistry.registerBlock(bundledController, ItemBlockBundledController.class, bundledController.getUnlocalizedName());
             MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(bundledController), new ControllerItemRenderer(new TileBundledController()));
+
+            //Bundled Receiver
+            GameRegistry.registerTileEntity(TileBundledReceiver.class, "BundledReceiver");
+            ClientRegistry.bindTileEntitySpecialRenderer(TileBundledReceiver.class, new TileControllerRenderer(new TileBundledReceiver()));
+
+            BlockBundledReceiver bundledReceiver = new BlockBundledReceiver("BundledReceiver");
+            GameRegistry.registerBlock(bundledReceiver, ItemBlockBundledReceiver.class, bundledReceiver.getUnlocalizedName());
+            MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(bundledReceiver), new ControllerItemRenderer(new TileBundledReceiver()));
         }
     }
 }

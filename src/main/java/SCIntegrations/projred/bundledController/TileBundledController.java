@@ -1,6 +1,7 @@
 package SCIntegrations.projred.bundledController;
 
-import SCIntegrations.core.ConstsInt;
+import SCIntegrations.SCIntegrations;
+import SCIntegrations.core.GuiConsts;
 import mrtjp.projectred.api.IBundledTile;
 import mrtjp.projectred.api.ProjectRedAPI;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,11 +18,11 @@ public class TileBundledController extends TileController implements ILightSigna
 
     private final byte[] currentSignal = new byte[16];
     private int[] signalStates = new int[16];
-    private static final ResourceLocation TEXTURE = new ResourceLocation("signalcraft:textures/models/controllers/controller_signals_bundeled.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(SCIntegrations.MOD_ID + ":textures/models/controllers/controller_signals_bundled.png");
 
     public TileBundledController() {
         super(TEXTURE);
-        this.setGuiId(ConstsInt.BUNDLED_CONTROLLER.guiId);
+        this.setGuiId(GuiConsts.BUNDLED_CONTROLLER.guiId);
         this.setName("Controller");
     }
 
