@@ -1,3 +1,4 @@
+itemGroup.signalcraft_integrations=SC - Integrations
 
 gui.lightSignalBundledRece.use=Depending on what Signal State is received,
 gui.lightSignalBundledRece.use2=this outputs a bundled signal on the color

@@ -2,6 +2,7 @@ package SCIntegrations.projred.bundledReceiver;
 
 import SCIntegrations.SCIntegrations;
 import SCIntegrations.core.GuiConsts;
+import cpw.mods.fml.common.Optional;
 import mrtjp.projectred.api.IBundledTile;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -12,6 +13,7 @@ import signalcraft.signalUtils.SignalState;
 
 import java.util.Arrays;
 
+@Optional.Interface(iface = "mrtjp.projectred.api.IBundledTile", modid = "ProjRed|Core", striprefs = true)
 public class TileBundledReceiver extends TileReceiver implements ISignalReceiver, IBundledTile {
 
     private byte[] outputSignal = new byte[16];
@@ -81,11 +83,13 @@ public class TileBundledReceiver extends TileReceiver implements ISignalReceiver
     }
 
     @Override
+    @Optional.Method(modid = "ProjRed|Core")
     public boolean canConnectBundled(int side) {
         return true;
     }
 
     @Override
+    @Optional.Method(modid = "ProjRed|Core")
     public byte[] getBundledSignal(int side) {
         return outputSignal.clone();
     }

@@ -1,6 +1,7 @@
 package SCIntegrations.oc.digitalUnivController;
 
 import SCIntegrations.SCIntegrations;
+import cpw.mods.fml.common.Optional;
 import li.cil.oc.api.driver.DeviceInfo;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
@@ -16,6 +17,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@Optional.InterfaceList({
+        @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers", striprefs = true),
+        @Optional.Interface(iface = "li.cil.oc.api.driver.DeviceInfo", modid = "OpenComputers", striprefs = true)
+})
 public class TileDigitalUniversalController extends TileController implements IUniversalController, SimpleComponent, DeviceInfo {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(SCIntegrations.MOD_ID + ":textures/models/controllers/controller_universal_digital.png");
@@ -32,11 +37,13 @@ public class TileDigitalUniversalController extends TileController implements IU
     // with that injector and silently breaks the component.
 
     @Override
+    @Optional.Method(modid = "OpenComputers")
     public String getComponentName() {
         return "signalcraft_universal_controller";
     }
 
     @Override
+    @Optional.Method(modid = "OpenComputers")
     public Map<String, String> getDeviceInfo() {
         Map<String, String> info = new HashMap<>();
         info.put(DeviceAttribute.Class, DeviceClass.Communication);
@@ -87,21 +94,25 @@ public class TileDigitalUniversalController extends TileController implements IU
     }
 
     @Callback(doc = "function(name:string, active:boolean):boolean; Activates or deactivates the paired receiver with the specified name. Returns true on success.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] setActive(Context context, Arguments args) {
         return setActive(args.checkString(0), args.checkBoolean(1));
     }
 
     @Callback(doc = "function(active:boolean):boolean; Activates or deactivates every paired receiver. Returns true if at least one receiver was affected.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] setActiveEverything(Context context, Arguments args) {
         return setActiveEverything(args.checkBoolean(0));
     }
 
     @Callback(doc = "function():table; Returns a list containing the name of every paired receiver.", direct = true, limit = 128)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] getReceiverNames(Context c, Arguments a) {
         return getReceiverNames();
     }
 
     @Callback(doc = "function():String; Returns the name of the controller", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] getControllerName(Context c, Arguments a) {
         return getControllerName();
     }

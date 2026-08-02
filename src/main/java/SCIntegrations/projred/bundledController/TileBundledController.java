@@ -2,6 +2,7 @@ package SCIntegrations.projred.bundledController;
 
 import SCIntegrations.SCIntegrations;
 import SCIntegrations.core.GuiConsts;
+import cpw.mods.fml.common.Optional;
 import mrtjp.projectred.api.IBundledTile;
 import mrtjp.projectred.api.ProjectRedAPI;
 import net.minecraft.nbt.NBTTagCompound;
@@ -14,6 +15,7 @@ import signalcraft.signalUtils.SignalState;
 
 import java.util.Arrays;
 
+@Optional.Interface(iface = "mrtjp.projectred.api.IBundledTile", modid = "ProjRed|Core", striprefs = true)
 public class TileBundledController extends TileController implements ILightSignalsController, IBundledTile {
 
     private final byte[] currentSignal = new byte[16];
@@ -106,11 +108,13 @@ public class TileBundledController extends TileController implements ILightSigna
     }
 
     @Override
+    @Optional.Method(modid = "ProjRed|Core")
     public boolean canConnectBundled(int side) {
         return true;
     }
 
     @Override
+    @Optional.Method(modid = "ProjRed|Core")
     public byte[] getBundledSignal(int side) {
         // controller does not emit bundled signal (input-only)
         return new byte[16];

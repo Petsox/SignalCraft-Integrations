@@ -3,7 +3,7 @@
   "modid": "SCIntegrations",
   "name": "SignalCraft-Integrations",
   "description": "This is an addon for SignalCraft that adds support for other mods.",
-  "version": "${version}",
+  "version": ${version},
   "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",

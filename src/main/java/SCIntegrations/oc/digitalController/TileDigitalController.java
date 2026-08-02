@@ -1,6 +1,7 @@
 package SCIntegrations.oc.digitalController;
 
 import SCIntegrations.SCIntegrations;
+import cpw.mods.fml.common.Optional;
 import li.cil.oc.api.driver.DeviceInfo;
 import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
@@ -20,6 +21,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@Optional.InterfaceList({
+        @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers", striprefs = true),
+        @Optional.Interface(iface = "li.cil.oc.api.driver.DeviceInfo", modid = "OpenComputers", striprefs = true)
+})
 public class TileDigitalController extends TileController implements ILightSignalsController, SimpleComponent, DeviceInfo {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(SCIntegrations.MOD_ID + ":textures/models/controllers/controller_signals_digital.png");
@@ -37,11 +42,13 @@ public class TileDigitalController extends TileController implements ILightSigna
     // injected" in the log).
 
     @Override
+    @Optional.Method(modid = "OpenComputers")
     public String getComponentName() {
         return "signalcraft_controller";
     }
 
     @Override
+    @Optional.Method(modid = "OpenComputers")
     public Map<String, String> getDeviceInfo() {
         Map<String, String> info = new HashMap<>();
         info.put(DeviceAttribute.Class, DeviceClass.Communication);
@@ -134,36 +141,43 @@ public class TileDigitalController extends TileController implements ILightSigna
     }
 
     @Callback(doc = "function(name:string, state:string):boolean; Tries to set the state for any paired signal with the specified name. Returns true on success.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] setState(Context context, Arguments args) {
         return setState(args.checkString(0), args.checkString(1));
     }
 
     @Callback(doc = "function(name:string):string; Gets the state for the signal with the specified name. Returns the state on success.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] getState(Context context, Arguments args) {
         return getState(args.checkString(0));
     }
 
     @Callback(doc = "function(state:string):boolean; Sets the state for every paired signal to the specified state. Returns true on success.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] setEveryState(Context context, Arguments args) {
         return setEveryState(args.checkString(0));
     }
 
     @Callback(doc = "function(name:string):boolean; Returns a list of every valid state of specified signal (by the name of the receiver below the signal)", direct = true, limit = 64)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] getValidStatesForSignal(Context context, Arguments args) {
         return getValidStatesForSignal(args.checkString(0));
     }
 
     @Callback(doc = "function():table; Returns a list containing the name of every paired receiver.", direct = true, limit = 128)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] getSignalNames(Context c, Arguments a) {
         return getSignalNames();
     }
 
     @Callback(doc = "This is a list of every available Signal States in CZSAR", getter = true, direct = true)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] states(Context c, Arguments a) {
         return states();
     }
 
     @Callback(doc = "function():String; Returns RailCraft label name of the controller", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
     public Object[] getControllerName(Context c, Arguments a) {
         return getControllerName();
     }
