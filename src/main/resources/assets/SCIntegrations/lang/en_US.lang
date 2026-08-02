@@ -17,6 +17,29 @@ gui.lightSignalAdvancedBundledCont.use3=receivers whose names are listed, comma 
 gui.advancedBundledCont.setState=Set State
 gui.advancedBundledCont.on=on
 
+gui.item.bundledController.use=Use this to control receivers with Bundled Signal.
+
+gui.item.bundledReceiver.use=Outputs a Bundled Signal based on received Signal State.
+
+gui.item.bundledAdvController.use=Use this to control specific receivers with Bundled Signal.
+
+gui.item.bundledUnivController.use=Activates a specified Universal Receiver.
+
+gui.item.digitalController.use=Driven by a computer it controls Signals, and much more.
+
+gui.item.digitalUnivController.use=Driven by a computer it controls Universal Receivers.
+
+gui.item.bundledActivated=Activated by Bundled Cable.
+gui.item.outputsBundled=Outputs signal to Bundled Cable.
+gui.item.computerActivated=Use OpenComputers computer to control this.
+
+tile.BundledController.name=Bundled Controller
+tile.BundledReceiver.name=Bundled Receiver
+tile.BundledUniversalController.name=Universal Bundled Controller
+tile.BundledAdvancedController.name=Advanced Bundled Controller
+tile.DigitalController.name=Digital Controller
+tile.DigitalUniversalController.name=Digital Universal Controller
+
 color.white=White
 color.orange=Orange
 color.magenta=Magenta

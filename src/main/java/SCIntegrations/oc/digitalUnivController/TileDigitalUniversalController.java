@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class TileDigitalUniversalController extends TileController implements IUniversalController, SimpleComponent, DeviceInfo {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(SCIntegrations.MOD_ID + ":textures/models/controllers/controller_signals_digital.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(SCIntegrations.MOD_ID + ":textures/models/controllers/controller_universal_digital.png");
 
     public TileDigitalUniversalController() {
         super(TEXTURE);
