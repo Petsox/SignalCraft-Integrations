@@ -12,7 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import signalcraft.SignalCraft;
 
-@Mod(modid = "SCIntegrations", name = "SignalCraft-Integrations", dependencies = "required-after:signalcraft@[1.7.10-0.6-ALPHA,)")
+@Mod(modid = "SCIntegrations", name = "SignalCraft-Integrations", dependencies = "required-after:signalcraft@[1.7.10-0.9-BETA,)")
 public class SCIntegrations {
     @Mod.Instance("SCIntegrations")
     public static SCIntegrations instance;

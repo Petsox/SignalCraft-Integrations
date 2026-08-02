@@ -1,84 +1,21 @@
 
-itemGroup.tabGSARBlocks=SignalCraft-Blocks
-itemGroup.signalcraft_items=SignalCraft-Items
-itemGroup.signalcraft_sssr=SSSR Signals (CZ)
-itemGroup.signalcraft_azd=AZD 70 Signals (CZ)
-itemGroup.tabSignalCraftCrossings=Crossings (CZ)
-itemGroup.tabSignalCraftOther=Other Stuff (CZ)
+gui.lightSignalBundledRece.use=Depending on what Signal State is received,
+gui.lightSignalBundledRece.use2=this outputs a bundled signal on the color
+gui.lightSignalBundledRece.use3=which has that Signal State specified in it's Text field.
 
-tile.blockSpeedSign.name=Speed Signal
+gui.lightSignalBundledCont.use=Depending on which Bundled Color senses a signal,
+gui.lightSignalBundledCont.use2=corresponding state gets send to every paired receiver.
 
-gui.sound.bellClassic=Bell
-gui.sound.vud.text=VUD Bell
-gui.sound.horn.text=Horn
-gui.sound.otradovice.text=Horn 2
-gui.sound.azd97zv1.text=E-Bell 1
-gui.sound.azd97zv2.text=E-Bell 2
+gui.lightSignalUniversalBundledCont.use=Depending on which Bundled Color senses a signal,
+gui.lightSignalUniversalBundledCont.use2=corresponding state gets send to a paired
+gui.lightSignalUniversalBundledCont.use3=receiver whose name is in the Text Field.
 
-gui.general.text.yes=Yes
-gui.general.text.no=No
-gui.general.text.none=None
-gui.general.text.up=Up
-gui.general.text.straight=Straight
-gui.general.text.left=Left
-gui.general.text.right=Right
-gui.general.text.down=Down
-gui.general.text.short=Short
-gui.general.text.long=Long
+gui.lightSignalAdvancedBundledCont.use=Depending on which Bundled Color senses a signal,
+gui.lightSignalAdvancedBundledCont.use2=the State set for that color gets sent only to the paired
+gui.lightSignalAdvancedBundledCont.use3=receivers whose names are listed, comma separated, on that row.
 
-gui.speedSignText=Input km/h
-
-gui.signalRenamer.text=Input new name:
-gui.signalRenamer.use=Use on Signals/Controllers to rename them
-gui.signalRenamer.openGui=Shift + Right in Air to open a GUI
-gui.signalRenamer.railcraft=See I dont have an anvil on me everytime I need to rename something, thats why I made a dedicated GUI just so you can change the name without an anvil.
-
-gui.signalBonder.Bender=Wait a minute.. Bender's name isn't Bonder, it's Bender!
-
-gui.levelcross.crossnum.text=Cross (Tracks):
-gui.levelcross.reflcross.text=Reflec. Cross:
-gui.levelcross.crossonpole.text=Cross on Pole:
-gui.levelcross.usepozlight.text=Enabled:
-gui.levelcross.distfrompole.text=Distance from Pole:
-gui.levelcross.pozlight.text=White Light:
-gui.levelcross.slovak.text=Slovakian:
-gui.levelcross.sound.text=Sound On:
-gui.levelcross.soundtype.text=Sound Type:
-gui.levelcross.stripesonpole.text=Stripes on Pole:
-gui.levelcross.pozlightdelay.text=White Light Delay (in Sec):
-gui.levelcross.headrot.text=Head Rotation (in Deg):
-gui.levelcross.crossnum.none.text=None
-gui.levelcross.crossnum.one.text=One
-gui.levelcross.crossnum.more.text=>One
-gui.levelcross.PVSign.text=PV Sign:
-gui.levelcross.red.light.cover.length.text=Red Light Cover:
-gui.levelcross.light.position.text=Light Position:
-gui.levelcross.white.light.cover.length.text=White Light Cover:
-gui.levelcross.ladder.text=Ladder:
-gui.levelcross.otradovice.text=Otradovice:
-gui.levelcross.krizvelky.text=Large Cross:
-gui.levelcross.arm.lenght.text=Arm Length:
-gui.levelcross.arm.lenght.42.text=4,2m
-gui.levelcross.arm.lenght.50.text=5,0m
-gui.levelcross.arm.lenght.55.text=5,5m
-gui.levelcross.arm.lenght.60.text=6,0m
-gui.levelcross.arm.lenght.65.text=6,5m
-gui.levelcross.arm.lenght.75.text=7,5m
-gui.levelcross.arm.down.delay.text=Delay before Arm goes down (in Sec):
-gui.levelcross.isnew.true=Newer
-gui.levelcross.isnew.false=Older
-gui.levelcross.pedestal=Pedestal is:
-
-gui.lightsignal.departure.text=Is Departure:
-gui.lightsignal.position.text=Position:
-gui.lightsignal.has.stripes.text=Has Stripes:
-gui.lightsignal.has.3stripes.text=Has 3 Stripes:
-gui.lightsignal.grouped.text=Grouped:
-gui.lightsignal.end.autoblock.text=End of AB:
-gui.lightsignal.speed.sign.text=Speed Sign:
-gui.lightsignal.type1.text=Type 1
-gui.lightsignal.type2.text=Type 2
-gui.lightsignal.type3.text=Type 3
+gui.advancedBundledCont.setState=Set State
+gui.advancedBundledCont.on=on
 
 color.white=White
 color.orange=Orange
@@ -104,104 +41,7 @@ side.west.4=Side 4:
 
 message.at.coords=at
 message.controllerUpdatedWithStates=Controller updated with States:
+message.controllerUpdatedWithNames=Controller updated with Receiver Names:
+message.controllerUpdatedWithStatesAndNames=Controller updated with Receiver Names:
 message.wrench.controllerPairedTo=§bThis Controller is paired to:
 message.wrench.receiverPairedTo=§bThis Receiver is paired to:
-
-#LOCALIZATION FROM GSAR
-
-gui.GuiEditSignBarriersModernL.editMsg_TITLE=Barrier modern left
-gui.GuiEditSignBarriersModernL.editMsg_Barriers_Length=The length of the barrier arm is:
-gui.GuiEditSignBarriersModernL.editMsg_Barriers_Timer=The barrier closes after:
-gui.GuiEditSignBarriersModernR.editMsg_TITLE=Barrier modern right
-gui.GuiEditSignBarriersModernR.editMsg_Barriers_Length=The length of the barrier arm is:
-gui.GuiEditSignBarriersModernR.editMsg_Barriers_Timer=The barrier closes after:
-gui.GuiSignalLeverGSAR.editMsgSB_TITLE=Signal lever
-gui.GuiStativSemiSignalsGSAR.editMsg_TITLE=Tripod for Semaphore Main signal
-gui.GuiStativLightSignalsGSAR.editMsg_TITLE=Tripod for Light Main signal
-
-gui.GuiSignSignalsGSAR.editMsg_TITLE_HECTOMETER_SIGN=HECTOMETRE PANEL
-gui.GuiSignSignalsGSAR.editMsg_1_HECTOMETER_SIGN=Input kilometre
-gui.GuiSignSignalsGSAR.editMsg_2_HECTOMETER_SIGN=(0-999)
-gui.GuiSignSignalsGSAR.editMsg_3_HECTOMETER_SIGN=Input metre
-gui.GuiSignSignalsGSAR.editMsg_4_HECTOMETER_SIGN=(0-9)
-
-gui.GuiSignSignalsGSAR.editMsg_TITLE_SIGN_LF1=SIGNAL LF1 - DRIVE SLOWLY SLICE
-gui.GuiSignSignalsGSAR.editMsg_1_SIGN_LF1=Input km/h
-gui.GuiSignSignalsGSAR.editMsg_2_SIGN_LF1=(0-15)
-gui.GuiSignSignalsGSAR.editMsg_3_SIGN_LF1=The given number is
-gui.GuiSignSignalsGSAR.editMsg_4_SIGN_LF1=calculated with (* 10).
-gui.GuiSignSignalsGSAR.editMsg_5_SIGN_LF1=e.g. Number 5 -> 50 km/h
-
-gui.GuiSignSignalsGSAR.editMsg_TITLE_SIGN_LF6=SIGNAL LF6 - SPEED WARNING SIGNAL
-gui.GuiSignSignalsGSAR.editMsg_1_SIGN_LF6=Input km/h
-gui.GuiSignSignalsGSAR.editMsg_2_SIGN_LF6=(0-15)
-gui.GuiSignSignalsGSAR.editMsg_3_SIGN_LF6=The given number is
-gui.GuiSignSignalsGSAR.editMsg_4_SIGN_LF6=calculated with (* 10).
-gui.GuiSignSignalsGSAR.editMsg_5_SIGN_LF6=e.g. Number 8 -> 80 km/h
-
-gui.GuiSignSignalsGSAR.editMsg_TITLE_SIGN_LF7=SIGNAL LF7 - SPEED SIGNAL
-gui.GuiSignSignalsGSAR.editMsg_1_SIGN_LF7=Input km/h
-gui.GuiSignSignalsGSAR.editMsg_2_SIGN_LF7=(0-16)
-gui.GuiSignSignalsGSAR.editMsg_3_SIGN_LF7=The given number is
-gui.GuiSignSignalsGSAR.editMsg_4_SIGN_LF7=calculated with (* 10).
-gui.GuiSignSignalsGSAR.editMsg_5_SIGN_LF7=e.g. Number 12 -> 120 km/h
-
-GuiEditMsgSB_TEXT=§nOperating agency (railway station)§r
-GuiEditMsgSB_TEXT2=e.g. 64 for railway station 64
-GuiEditMsgSB_TEXT3=§nSignal name§r
-GuiEditMsgSB_TEXT4=e.g. A for entry signal A.
-GuiEditMsgSB_TEXT5=§nColor of the lever:§r
-
-gui.GuiStationSignGSAR.editMsg_TITLE=Station sign
-gui.GuiStationSignGSAR.editMsg_ST_DESC=Does this sign text?
-gui.GuiStationSignGSAR.editMsg_ST_DESC1=Is this model:
-gui.GuiStationSignGSAR.editMsg_ST_yes=Yes
-gui.GuiStationSignGSAR.editMsg_ST_no=No
-gui.GuiStationSignGSAR.editMsg_ST_normal=normal
-gui.GuiStationSignGSAR.editMsg_ST_hanging=free hanging
-gui.GuiStationSignGSAR.editMsg_ST_notvisible=not visible
-gui.GuiStationSignGSAR.editMsg_ST_Color_TITLE=Color palette:
-gui.GuiStationSignGSAR.editMsg_ST_Styles_TITLE=Font:
-gui.GuiStationSignGSAR.editMsg_ST_Styles_DESC=Text:
-gui.GuiStationSignGSAR.editMsg_ST_Styles_reset=Reset
-gui.GuiStationSignGSAR.editMsg_ST_Styles_resetAll=Reset all
-gui.GuiStationSignGSAR.editMsg_ST_Slider_TITLE=Adjusters
-gui.GuiStationSignGSAR.editMsg_ST_Slider_xPos=X Pos.
-gui.GuiStationSignGSAR.editMsg_ST_Slider_yPos=Y Pos.
-gui.GuiStationSignGSAR.editMsg_ST_Slider_scale=Scale
-gui.GuiStationSignGSAR.editMsg_ST_Light_TITLE=Lighting (Night)
-gui.GuiStationSignGSAR.editMsg_ST_Light=Light
-gui.GuiStationSignGSAR.editMsg_ST_Side_TITLE=Show text:
-gui.GuiStationSignGSAR.editMsg_ST_Side=Side
-
-GuiEditMsgSB_DESC=The designation of the main signals is dependent
-GuiEditMsgSB_DESC1=upon their use. There are 5 different types.
-GuiEditMsgSB_DESC2=§nEntry signals (ESIG)§r
-GuiEditMsgSB_DESC3=A-E in kilometre of direction
-GuiEditMsgSB_DESC4=F-J against kilometre of direction
-GuiEditMsgSB_DESC5=§nExit signals (ASIG)§r
-GuiEditMsgSB_DESC6=N1, N2, N3 ...in kilometre of direction
-GuiEditMsgSB_DESC7=P1, P2, P3 ...against kilometre of direction
-GuiEditMsgSB_DESC8=§nIntermediate signals (ZSIG)§r
-GuiEditMsgSB_DESC9=R1, R2, R3 ...in kilometre of direction
-GuiEditMsgSB_DESC10=S1, S2, S3 ...against kilometre of direction
-GuiEditMsgSB_DESC11=In the counter rail double letters are used.
-GuiEditMsgSB_DESC12=ZB.: AA, NN1, RR1 ...
-GuiEditMsgSB_DESC13=§nBlock signals (BKSIG)§r
-GuiEditMsgSB_DESC14=101, 103, 105 ...in kilometre of direction
-GuiEditMsgSB_DESC15=100, 102, 104 ...against kilometre of direction
-GuiEditMsgSB_DESC16=Distant signals have the same name like
-GuiEditMsgSB_DESC17=main signals, only in small letters.
-
-gui.GuiSwitchGSAR.editMsg_TITLE=Turnout signal mechanic
-gui.GuiSwitchGSAR.editMsg_WN_left=Left
-gui.GuiSwitchGSAR.editMsg_WN_right=Right
-gui.GuiSwitchGSAR.editMsg_WN_yes=Yes
-gui.GuiSwitchGSAR.editMsg_WN_no=No
-gui.GuiSwitchGSAR.editMsg_WN=From your Position:
-gui.GuiSwitchGSAR.editMsg_WN_2=Which side you find yourself on the switch?
-gui.GuiSwitchGSAR.editMsg_WN_3=Which direction is the switches bent?
-gui.GuiSwitchGSAR.editMsg_WN_4=Is this a electronic stationary switches (EOW)?
-gui.GuiSwitchGSAR.editMsg_WN_5=Name from switch:
-gui.GuiSwitchGSAR.editMsg_WN_help=Help
-gui.GuiSwitchGSAR.editMsg_WN_return=Return
