@@ -8,8 +8,8 @@ gui.lightSignalBundledCont.use=Depending on which Bundled Color senses a signal,
 gui.lightSignalBundledCont.use2=corresponding state gets send to every paired receiver.
 
 gui.lightSignalUniversalBundledCont.use=Depending on which Bundled Color senses a signal,
-gui.lightSignalUniversalBundledCont.use2=corresponding state gets send to a paired
-gui.lightSignalUniversalBundledCont.use3=receiver whose name is in the Text Field.
+gui.lightSignalUniversalBundledCont.use2=corresponding state gets send only to the paired
+gui.lightSignalUniversalBundledCont.use3=receivers whose names are listed, comma separated, on that row.
 
 gui.lightSignalAdvancedBundledCont.use=Depending on which Bundled Color senses a signal,
 gui.lightSignalAdvancedBundledCont.use2=the State set for that color gets sent only to the paired
@@ -24,7 +24,7 @@ gui.item.bundledReceiver.use=Outputs a Bundled Signal based on received Signal S
 
 gui.item.bundledAdvController.use=Use this to control specific receivers with Bundled Signal.
 
-gui.item.bundledUnivController.use=Activates a specified Universal Receiver.
+gui.item.bundledUnivController.use=Activates specified Universal Receivers.
 
 gui.item.digitalController.use=Driven by a computer it controls Signals, and much more.
 

@@ -15,7 +15,9 @@ import signalcraft.entities.controllers.universal.IUniversalController;
 import signalcraft.entities.controllers.universal.TileReceiverUniversal;
 import signalcraft.signalUtils.BlockPos;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 
 @Optional.Interface(iface = "mrtjp.projectred.api.IBundledTile", modid = "ProjRed|Core", striprefs = true)
@@ -77,20 +79,28 @@ public class TileBundledUniversalController extends TileController implements IU
     }
 
     private void activateColor(int colorIndex) {
-        forNamedReceiver(receiverNames[colorIndex], receiver -> receiver.activate(true));
+        forNamedReceivers(colorIndex, receiver -> receiver.activate(true));
     }
 
     private void deactivateColor(int colorIndex) {
-        forNamedReceiver(receiverNames[colorIndex], receiver -> receiver.activate(false));
+        forNamedReceivers(colorIndex, receiver -> receiver.activate(false));
     }
 
-    private void forNamedReceiver(String name, Consumer<TileReceiverUniversal> action) {
-        if (name == null || name.isEmpty()) return;
+    private void forNamedReceivers(int colorIndex, Consumer<TileReceiverUniversal> action) {
+        String namesCsv = receiverNames[colorIndex];
+        if (namesCsv == null || namesCsv.trim().isEmpty()) return;
+
+        Set<String> names = new HashSet<>();
+        for (String name : namesCsv.split(",")) {
+            String trimmed = name.trim();
+            if (!trimmed.isEmpty()) names.add(trimmed);
+        }
+        if (names.isEmpty()) return;
 
         for (Map.Entry<BlockPos, Integer> entry : this.getPairings().entrySet()) {
             BlockPos pos = entry.getKey();
             TileEntity tile = worldObj.getTileEntity(pos.getX(), pos.getY(), pos.getZ());
-            if (tile instanceof TileReceiverUniversal && name.equals(((TileReceiverUniversal) tile).getName())) {
+            if (tile instanceof TileReceiverUniversal && names.contains(((TileReceiverUniversal) tile).getName())) {
                 action.accept((TileReceiverUniversal) tile);
             }
         }

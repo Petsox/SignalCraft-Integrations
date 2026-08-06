@@ -2,6 +2,7 @@ package SCIntegrations.projred.bundledReceiver;
 
 import SCIntegrations.projred.GuiBundledRowScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.ChatComponentTranslation;
 import signalcraft.signalUtils.SignalState;
 import signalcraft.signalUtils.Utils;
 
@@ -67,7 +68,7 @@ public class GuiBundledReceiver extends GuiBundledRowScreen {
 
         thisTileE.setSignalStates(signalStates);
 
-        Utils.addLocalizedChatMessage(this.mc.thePlayer, "message.controllerUpdatedWithStates");
+        Utils.addChatMessage(this.mc.thePlayer, new ChatComponentTranslation("message.controllerUpdatedWithStates"));
         Utils.addChatMessage(this.mc.thePlayer, java.util.Arrays.toString(colorNames));
     }
 }

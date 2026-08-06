@@ -2,11 +2,12 @@ package SCIntegrations.projred.bundledUnivController;
 
 import SCIntegrations.projred.GuiBundledRowScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.ChatComponentTranslation;
 import signalcraft.signalUtils.Utils;
 
 public class GuiBundledUniversalController extends GuiBundledRowScreen {
-    private static final int FIELD_WIDTH = 80;
-    private static final int FIELD_MAX_LENGTH = 12;
+    private static final int FIELD_WIDTH = 110;
+    private static final int FIELD_MAX_LENGTH = 48;
 
     private final TileBundledUniversalController thisTileE;
 
@@ -52,7 +53,7 @@ public class GuiBundledUniversalController extends GuiBundledRowScreen {
 
         thisTileE.setReceiverNames(names);
 
-        Utils.addLocalizedChatMessage(this.mc.thePlayer, "message.controllerUpdatedWithNames");
+        Utils.addChatMessage(this.mc.thePlayer, new ChatComponentTranslation("message.controllerUpdatedWithNames"));
         Utils.addChatMessage(this.mc.thePlayer, java.util.Arrays.toString(names));
     }
 }
