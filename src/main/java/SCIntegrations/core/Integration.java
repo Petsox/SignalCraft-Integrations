@@ -3,6 +3,9 @@ package SCIntegrations.core;
 import SCIntegrations.oc.digitalController.BlockDigitalController;
 import SCIntegrations.oc.digitalController.ItemBlockDigitalController;
 import SCIntegrations.oc.digitalController.TileDigitalController;
+import SCIntegrations.oc.digitalCrossController.BlockDigitalCrossingController;
+import SCIntegrations.oc.digitalCrossController.ItemBlockDigitalCrossingController;
+import SCIntegrations.oc.digitalCrossController.TileDigitalCrossingController;
 import SCIntegrations.oc.digitalUnivController.BlockDigitalUniversalController;
 import SCIntegrations.oc.digitalUnivController.ItemBlockDigitalUniversalController;
 import SCIntegrations.oc.digitalUnivController.TileDigitalUniversalController;
@@ -28,6 +31,7 @@ public class Integration {
     private static BlockBundledReceiver bundledReceiver;
     private static BlockDigitalController digitalController;
     private static BlockDigitalUniversalController digitalUniversalController;
+    private static BlockDigitalCrossingController digitalCrossingController;
 
     public static void registerIntegrations() {
 
@@ -63,6 +67,11 @@ public class Integration {
             GameRegistry.registerTileEntity(TileDigitalUniversalController.class, "DigitalUniversalController");
             digitalUniversalController = new BlockDigitalUniversalController("DigitalUniversalController");
             GameRegistry.registerBlock(digitalUniversalController, ItemBlockDigitalUniversalController.class, digitalUniversalController.getUnlocalizedName());
+
+            //Digital Crossing Controller
+            GameRegistry.registerTileEntity(TileDigitalCrossingController.class, "DigitalCrossingController");
+            digitalCrossingController = new BlockDigitalCrossingController("DigitalCrossingController");
+            GameRegistry.registerBlock(digitalCrossingController, ItemBlockDigitalCrossingController.class, digitalCrossingController.getUnlocalizedName());
         }
     }
 
@@ -88,5 +97,9 @@ public class Integration {
 
     public static BlockDigitalUniversalController getDigitalUniversalController() {
         return digitalUniversalController;
+    }
+
+    public static BlockDigitalCrossingController getDigitalCrossingController() {
+        return digitalCrossingController;
     }
 }

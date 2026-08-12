@@ -30,6 +30,8 @@ gui.item.digitalController.use=Driven by a computer it controls Signals, and muc
 
 gui.item.digitalUnivController.use=Driven by a computer it controls Universal Receivers.
 
+gui.item.digitalCrossingController.use=Driven by a computer it controls Crossing Barriers.
+
 gui.item.bundledActivated=Activated by Bundled Cable.
 gui.item.outputsBundled=Outputs signal to Bundled Cable.
 gui.item.computerActivated=Use OpenComputers computer to control this.
@@ -40,6 +42,7 @@ tile.BundledUniversalController.name=Universal Bundled Controller
 tile.BundledAdvancedController.name=Advanced Bundled Controller
 tile.DigitalController.name=Digital Controller
 tile.DigitalUniversalController.name=Digital Universal Controller
+tile.DigitalCrossingController.name=Digital Crossing Controller
 
 color.white=White
 color.orange=Orange

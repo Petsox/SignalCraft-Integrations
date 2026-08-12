@@ -4,6 +4,7 @@ import SCIntegrations.core.GuiConsts;
 import SCIntegrations.core.Integration;
 import SCIntegrations.core.Mods;
 import SCIntegrations.oc.digitalController.TileDigitalController;
+import SCIntegrations.oc.digitalCrossController.TileDigitalCrossingController;
 import SCIntegrations.oc.digitalUnivController.TileDigitalUniversalController;
 import SCIntegrations.projred.bundledAdvController.GuiBundledAdvancedController;
 import SCIntegrations.projred.bundledAdvController.TileBundledAdvancedController;
@@ -78,6 +79,9 @@ public class ClientProxy extends CommonProxy {
 
             ClientRegistry.bindTileEntitySpecialRenderer(TileDigitalUniversalController.class, new TileControllerRenderer(new TileDigitalUniversalController()));
             MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Integration.getDigitalUniversalController()), new ControllerItemRenderer(new TileDigitalUniversalController()));
+
+            ClientRegistry.bindTileEntitySpecialRenderer(TileDigitalCrossingController.class, new TileControllerRenderer(new TileDigitalCrossingController()));
+            MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Integration.getDigitalCrossingController()), new ControllerItemRenderer(new TileDigitalCrossingController()));
         }
     }
 }
