@@ -55,8 +55,19 @@ public class TileDigitalCrossingController extends TileCrossingController implem
 
     // Computer stuff //
 
+    private boolean nameHasBarriers(String name) {
+        for (TileReceiver receiver : this.getReceivers()) {
+            if (receiver instanceof TileCrossingReceiver && name.equals(receiver.getName())
+                    && ((TileCrossingReceiver) receiver).signalHasBarriers()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private Object[] activate(String name, boolean state) {
         boolean any = false;
+        boolean nameHasBarriers = !state && nameHasBarriers(name);
         for (TileReceiver receiver : this.getReceivers()) {
             if (!(receiver instanceof TileCrossingReceiver) || !name.equals(receiver.getName())) {
                 continue;
@@ -65,8 +76,8 @@ public class TileDigitalCrossingController extends TileCrossingController implem
             if (state) {
                 // lowering always drops the barriers, matching setBarrierState(true)
                 crossingReceiver.setCrossingState(true);
-            } else if (!crossingHasBarriers() || crossingReceiver.signalHasBarriers()) {
-                // raising only affects receivers that actually have barriers, unless none of them do
+            } else if (!nameHasBarriers || crossingReceiver.signalHasBarriers()) {
+                // raising only affects receivers that actually have barriers, unless none of the receivers with this name do
                 crossingReceiver.setCrossingState(false);
             }
             any = true;
