@@ -98,6 +98,17 @@ public class TileDigitalController extends TileController implements ILightSigna
         throw new IllegalArgumentException("invalid state" + state);
     }
 
+    private Object[] setMostRestrictiveOnAll() {
+        boolean any = false;
+        for (TileReceiver receiver : this.getReceivers()) {
+            if (receiver instanceof ISignalReceiver) {
+                ((ISignalReceiver) receiver).setStateToSignalsMostRestrictive();
+                any = true;
+            }
+        }
+        return new Object[]{any};
+    }
+
     private Object[] getValidStatesForSignal(String name) {
         TileReceiver receiver = this.getReceiverByName(name);
         if (receiver instanceof ISignalReceiver) {
@@ -156,6 +167,12 @@ public class TileDigitalController extends TileController implements ILightSigna
     @Optional.Method(modid = "OpenComputers")
     public Object[] setEveryState(Context context, Arguments args) {
         return setEveryState(args.checkString(0));
+    }
+
+    @Callback(doc = "function():boolean; Sets every paired signal to its own most restrictive valid state. Unlike setEveryState, this works even for signals that don't have a \"Stuj\" state. Returns true if at least one receiver was affected.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] setMostRestrictiveOnAll(Context context, Arguments args) {
+        return setMostRestrictiveOnAll();
     }
 
     @Callback(doc = "function(name:string):boolean; Returns a list of every valid state of specified signal (by the name of the receiver below the signal)", direct = true, limit = 64)
