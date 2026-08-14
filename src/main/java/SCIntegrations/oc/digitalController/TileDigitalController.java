@@ -14,6 +14,8 @@ import signalcraft.entities.controllers.TileReceiver;
 import signalcraft.entities.controllers.signals.ISignalReceiver;
 import signalcraft.entities.controllers.signals.lightSignals.ILightSignalsController;
 import signalcraft.entities.signals.ISignal;
+import signalcraft.entities.signals.lightSignals.TileLightSignal;
+import signalcraft.signalUtils.Consts;
 import signalcraft.signalUtils.SignalState;
 
 import java.util.ArrayList;
@@ -109,6 +111,20 @@ public class TileDigitalController extends TileController implements ILightSigna
         return new Object[]{any};
     }
 
+    private Object[] getSpeedSignText(String name) {
+        TileReceiver receiver = this.getReceiverByName(name);
+        if (receiver != null) {
+            for (int i = 1; i <= 10; ++i) {
+                final TileEntity tileE = worldObj.getTileEntity(receiver.xCoord, receiver.yCoord + i, receiver.zCoord);
+                if (tileE instanceof TileLightSignal) {
+                    Consts.SpeedSignText speedSignText = ((TileLightSignal) tileE).getSpeedSignText();
+                    return new Object[]{speedSignText != Consts.SpeedSignText.NO_SIGN, speedSignText.toString()};
+                }
+            }
+        }
+        return new Object[]{false};
+    }
+
     private Object[] getValidStatesForSignal(String name) {
         TileReceiver receiver = this.getReceiverByName(name);
         if (receiver instanceof ISignalReceiver) {
@@ -173,6 +189,12 @@ public class TileDigitalController extends TileController implements ILightSigna
     @Optional.Method(modid = "OpenComputers")
     public Object[] setMostRestrictiveOnAll(Context context, Arguments args) {
         return setMostRestrictiveOnAll();
+    }
+
+    @Callback(doc = "function(name:string):boolean, string; Returns whether the signal with the specified name has a speed sign, and its text (\"30\", \"50\", \"30S\") if so.", direct = true, limit = 32)
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] getSpeedSignText(Context context, Arguments args) {
+        return getSpeedSignText(args.checkString(0));
     }
 
     @Callback(doc = "function(name:string):boolean; Returns a list of every valid state of specified signal (by the name of the receiver below the signal)", direct = true, limit = 64)

@@ -8,7 +8,7 @@ import signalcraft.signalUtils.Utils;
 
 public class GuiBundledController extends GuiBundledRowScreen {
     private static final int FIELD_WIDTH = 80;
-    private static final int FIELD_MAX_LENGTH = 12;
+    private static final int FIELD_MAX_LENGTH = 20;
 
     private final TileBundledController thisTileE;
     private final int[] signalStates = new int[ROWS];

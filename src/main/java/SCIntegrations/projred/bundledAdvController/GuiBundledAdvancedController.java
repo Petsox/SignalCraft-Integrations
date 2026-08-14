@@ -9,7 +9,7 @@ import signalcraft.signalUtils.Utils;
 public class GuiBundledAdvancedController extends GuiBundledRowScreen {
     private static final int STATE_FIELD_WIDTH = 55;
     private static final int NAME_FIELD_WIDTH = 110;
-    private static final int STATE_FIELD_MAX_LENGTH = 12;
+    private static final int STATE_FIELD_MAX_LENGTH = 20;
     private static final int NAME_FIELD_MAX_LENGTH = 48;
 
     private final TileBundledAdvancedController thisTileE;
