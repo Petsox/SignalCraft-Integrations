@@ -65,6 +65,20 @@ public class TileDigitalCrossingController extends TileCrossingController implem
         return false;
     }
 
+    private boolean isArmDownFor(String name) {
+        boolean any = false;
+        for (TileReceiver receiver : this.getReceivers()) {
+            if (!(receiver instanceof TileCrossingReceiver) || !name.equals(receiver.getName())) {
+                continue;
+            }
+            if (!((TileCrossingReceiver) receiver).isArmDown()) {
+                return false;
+            }
+            any = true;
+        }
+        return any;
+    }
+
     private Object[] activate(String name, boolean state) {
         boolean any = false;
         boolean nameHasBarriers = !state && nameHasBarriers(name);
@@ -119,6 +133,12 @@ public class TileDigitalCrossingController extends TileCrossingController implem
     @Optional.Method(modid = "OpenComputers")
     public Object[] activateAll(Context context, Arguments args) {
         return activateAll(args.checkBoolean(0));
+    }
+
+    @Callback(doc = "function(name:string):boolean; Returns true if every paired crossing receiver with the specified name has its arm down, false otherwise (including if no receiver matched).", direct = true, limit = 128)
+    @Optional.Method(modid = "OpenComputers")
+    public Object[] isArmDownFor(Context context, Arguments args) {
+        return new Object[]{isArmDownFor(args.checkString(0))};
     }
 
     @Callback(doc = "function():table; Returns a list containing the name of every paired receiver.", direct = true, limit = 128)
