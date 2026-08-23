@@ -15,6 +15,9 @@ import SCIntegrations.projred.bundledAdvController.TileBundledAdvancedController
 import SCIntegrations.projred.bundledController.BlockBundledController;
 import SCIntegrations.projred.bundledController.ItemBlockBundledController;
 import SCIntegrations.projred.bundledController.TileBundledController;
+import SCIntegrations.projred.bundledCrossController.BlockBundledCrossingController;
+import SCIntegrations.projred.bundledCrossController.ItemBlockBundledCrossingController;
+import SCIntegrations.projred.bundledCrossController.TileBundledCrossingController;
 import SCIntegrations.projred.bundledReceiver.BlockBundledReceiver;
 import SCIntegrations.projred.bundledReceiver.ItemBlockBundledReceiver;
 import SCIntegrations.projred.bundledReceiver.TileBundledReceiver;
@@ -28,6 +31,7 @@ public class Integration {
     private static BlockBundledController bundledController;
     private static BlockBundledUniversalController bundledUniversalController;
     private static BlockBundledAdvancedController bundledAdvancedController;
+    private static BlockBundledCrossingController bundledCrossingController;
     private static BlockBundledReceiver bundledReceiver;
     private static BlockDigitalController digitalController;
     private static BlockDigitalUniversalController digitalUniversalController;
@@ -50,6 +54,11 @@ public class Integration {
             GameRegistry.registerTileEntity(TileBundledAdvancedController.class, "BundledAdvancedController");
             bundledAdvancedController = new BlockBundledAdvancedController("BundledAdvancedController");
             GameRegistry.registerBlock(bundledAdvancedController, ItemBlockBundledAdvancedController.class, bundledAdvancedController.getUnlocalizedName());
+
+            //Bundled Crossing Controller
+            GameRegistry.registerTileEntity(TileBundledCrossingController.class, "BundledCrossingController");
+            bundledCrossingController = new BlockBundledCrossingController("BundledCrossingController");
+            GameRegistry.registerBlock(bundledCrossingController, ItemBlockBundledCrossingController.class, bundledCrossingController.getUnlocalizedName());
 
             //Bundled Receiver
             GameRegistry.registerTileEntity(TileBundledReceiver.class, "BundledReceiver");
@@ -85,6 +94,10 @@ public class Integration {
 
     public static BlockBundledAdvancedController getBundledAdvancedController() {
         return bundledAdvancedController;
+    }
+
+    public static BlockBundledCrossingController getBundledCrossingController() {
+        return bundledCrossingController;
     }
 
     public static BlockBundledReceiver getBundledReceiver() {

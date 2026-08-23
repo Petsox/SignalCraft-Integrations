@@ -10,6 +10,8 @@ import SCIntegrations.projred.bundledAdvController.GuiBundledAdvancedController;
 import SCIntegrations.projred.bundledAdvController.TileBundledAdvancedController;
 import SCIntegrations.projred.bundledController.GuiBundledController;
 import SCIntegrations.projred.bundledController.TileBundledController;
+import SCIntegrations.projred.bundledCrossController.GuiBundledCrossingController;
+import SCIntegrations.projred.bundledCrossController.TileBundledCrossingController;
 import SCIntegrations.projred.bundledReceiver.GuiBundledReceiver;
 import SCIntegrations.projred.bundledReceiver.TileBundledReceiver;
 import SCIntegrations.projred.bundledUnivController.GuiBundledUniversalController;
@@ -55,6 +57,12 @@ public class ClientProxy extends CommonProxy {
                     TileBundledAdvancedController::new,
                     tile -> new GuiBundledAdvancedController((TileBundledAdvancedController) tile)
             );
+            SCGuis.register(
+                    "BUNDLED_CROSSING_CONTROLLER_GUI",
+                    GuiConsts.BUNDLED_CROSSING_CONTROLLER.guiId,
+                    TileBundledCrossingController::new,
+                    tile -> new GuiBundledCrossingController((TileBundledCrossingController) tile)
+            );
         }
     }
 
@@ -68,6 +76,9 @@ public class ClientProxy extends CommonProxy {
 
             ClientRegistry.bindTileEntitySpecialRenderer(TileBundledAdvancedController.class, new TileControllerRenderer(new TileBundledAdvancedController()));
             MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Integration.getBundledAdvancedController()), new ControllerItemRenderer(new TileBundledAdvancedController()));
+
+            ClientRegistry.bindTileEntitySpecialRenderer(TileBundledCrossingController.class, new TileControllerRenderer(new TileBundledCrossingController()));
+            MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Integration.getBundledCrossingController()), new ControllerItemRenderer(new TileBundledCrossingController()));
 
             ClientRegistry.bindTileEntitySpecialRenderer(TileBundledReceiver.class, new TileControllerRenderer(new TileBundledReceiver()));
             MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Integration.getBundledReceiver()), new ControllerItemRenderer(new TileBundledReceiver()));

@@ -7,15 +7,22 @@ import li.cil.oc.api.machine.Arguments;
 import li.cil.oc.api.machine.Callback;
 import li.cil.oc.api.machine.Context;
 import li.cil.oc.api.network.SimpleComponent;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import signalcraft.entities.controllers.TileReceiver;
 import signalcraft.entities.controllers.crossings.TileCrossingController;
 import signalcraft.entities.controllers.crossings.TileCrossingReceiver;
+import signalcraft.entities.levelCrossings.ILevelCrossing;
 import signalcraft.signalUtils.Consts;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @Optional.InterfaceList({
         @Optional.Interface(iface = "li.cil.oc.api.network.SimpleComponent", modid = "OpenComputers", striprefs = true),
@@ -24,6 +31,10 @@ import java.util.Map;
 public class TileDigitalCrossingController extends TileCrossingController implements SimpleComponent, DeviceInfo {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(SCIntegrations.MOD_ID + ":textures/models/controllers/controller_crossing_digital.png");
+
+    // names currently commanded active (barriers down); used to avoid raising a barrier
+    // that's shared with another receiver whose name is still active - see activate()
+    private final Set<String> activeNames = new HashSet<>();
 
     public TileDigitalCrossingController() {
         super(TEXTURE);
@@ -81,6 +92,11 @@ public class TileDigitalCrossingController extends TileCrossingController implem
 
     private Object[] activate(String name, boolean state) {
         boolean any = false;
+        if (state) {
+            activeNames.add(name);
+        } else {
+            activeNames.remove(name);
+        }
         boolean nameHasBarriers = !state && nameHasBarriers(name);
         for (TileReceiver receiver : this.getReceivers()) {
             if (!(receiver instanceof TileCrossingReceiver) || !name.equals(receiver.getName())) {
@@ -90,13 +106,41 @@ public class TileDigitalCrossingController extends TileCrossingController implem
             if (state) {
                 // lowering always drops the barriers, matching setBarrierState(true)
                 crossingReceiver.setCrossingState(true);
-            } else if (!nameHasBarriers || crossingReceiver.signalHasBarriers()) {
-                // raising only affects receivers that actually have barriers, unless none of the receivers with this name do
+            } else if ((!nameHasBarriers || crossingReceiver.signalHasBarriers())
+                    && !isCrossingHeldByOtherActiveName(crossingReceiver, name)) {
+                // raising only affects receivers that actually have barriers, unless none of the receivers with this name do,
+                // and never raises a physical barrier that another still-active name is also relying on
                 crossingReceiver.setCrossingState(false);
             }
             any = true;
         }
         return new Object[]{any};
+    }
+
+    // true if the physical crossing found above `receiver` is also reachable from a receiver
+    // belonging to a different, still-active name - i.e. two named groups share one barrier
+    private boolean isCrossingHeldByOtherActiveName(TileCrossingReceiver receiver, String excludeName) {
+        TileEntity crossing = findCrossingTile(receiver);
+        if (crossing == null) return false;
+
+        for (TileReceiver other : this.getReceivers()) {
+            if (!(other instanceof TileCrossingReceiver) || other == receiver) continue;
+            String otherName = other.getName();
+            if (otherName == null || otherName.equals(excludeName) || !activeNames.contains(otherName)) continue;
+            if (findCrossingTile((TileCrossingReceiver) other) == crossing) return true;
+        }
+        return false;
+    }
+
+    // mirrors TileCrossingReceiver's private findCrossing() scan, using only public API
+    private static TileEntity findCrossingTile(TileCrossingReceiver receiver) {
+        for (int i = 1; i <= 10; i++) {
+            TileEntity tile = receiver.getWorldObj().getTileEntity(receiver.xCoord, receiver.yCoord + i, receiver.zCoord);
+            if (tile instanceof ILevelCrossing) {
+                return tile;
+            }
+        }
+        return null;
     }
 
     private Object[] activateAll(boolean state) {
@@ -151,5 +195,27 @@ public class TileDigitalCrossingController extends TileCrossingController implem
     @Optional.Method(modid = "OpenComputers")
     public Object[] getControllerName(Context c, Arguments a) {
         return getControllerName();
+    }
+
+    @Override
+    public void writeToNBT(NBTTagCompound tag) {
+        super.writeToNBT(tag);
+        NBTTagList activeNamesList = new NBTTagList();
+        for (String name : activeNames) {
+            activeNamesList.appendTag(new NBTTagString(name));
+        }
+        tag.setTag("activeNames", activeNamesList);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound tag) {
+        super.readFromNBT(tag);
+        activeNames.clear();
+        if (tag.hasKey("activeNames")) {
+            NBTTagList activeNamesList = tag.getTagList("activeNames", 8); // 8 = NBTTagString id
+            for (int i = 0; i < activeNamesList.tagCount(); i++) {
+                activeNames.add(activeNamesList.getStringTagAt(i));
+            }
+        }
     }
 }

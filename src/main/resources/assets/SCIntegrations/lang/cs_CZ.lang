@@ -1,0 +1,81 @@
+itemGroup.signalcraft_integrations=SC - Integrations
+
+gui.lightSignalBundledRece.use=V závislosti na přijaté návěsti
+gui.lightSignalBundledRece.use2=vysílá svazkový signál na barvě,
+gui.lightSignalBundledRece.use3=která má danou návěst zadanou ve svém textovém poli.
+
+gui.lightSignalBundledCont.use=V závislosti na tom, která barva svazkového kabelu zaznamená signál,
+gui.lightSignalBundledCont.use2=odpovídající návěst se odešle každému spárovanému přijímači.
+
+gui.lightSignalUniversalBundledCont.use=V závislosti na tom, která barva svazkového kabelu zaznamená signál,
+gui.lightSignalUniversalBundledCont.use2=odpovídající návěst se odešle pouze spárovaným
+gui.lightSignalUniversalBundledCont.use3=přijímačům, jejichž názvy jsou uvedeny v daném řádku, oddělené čárkou.
+
+gui.lightSignalAdvancedBundledCont.use=V závislosti na tom, která barva svazkového kabelu zaznamená signál,
+gui.lightSignalAdvancedBundledCont.use2=návěst nastavená pro danou barvu se odešle pouze spárovaným
+gui.lightSignalAdvancedBundledCont.use3=přijímačům, jejichž názvy jsou uvedeny v daném řádku, oddělené čárkou.
+
+gui.lightSignalCrossingBundledCont.use=V závislosti na tom, která barva svazkového kabelu zaznamená signál,
+gui.lightSignalCrossingBundledCont.use2=se přejezd aktivuje nebo deaktivuje pouze pro spárované
+gui.lightSignalCrossingBundledCont.use3=přijímače, jejichž názvy jsou uvedeny v daném řádku, oddělené čárkou.
+
+gui.advancedBundledCont.setState=Návěst
+gui.advancedBundledCont.on=na
+
+gui.item.bundledController.use=Použij k ovládání přijímačů pomocí svazkového signálu.
+
+gui.item.bundledReceiver.use=Vysílá svazkový signál na základě přijaté návěsti.
+
+gui.item.bundledAdvController.use=Použij k ovládání konkrétních přijímačů pomocí svazkového signálu.
+
+gui.item.bundledUnivController.use=Aktivuje zadané univerzální přijímače.
+
+gui.item.bundledCrossController.use=Aktivuje zadané závory přejezdu.
+
+gui.item.digitalController.use=Řízeno počítačem ovládá návěstidla, ale umí mnohem více.
+
+gui.item.digitalUnivController.use=Řízeno počítačem ovládá univerzální přijímače.
+
+gui.item.digitalCrossingController.use=Řízeno počítačem ovládá příjmače přejezdu.
+
+gui.item.bundledActivated=Aktivováno svazkovým kabelem.
+gui.item.outputsBundled=Vysílá signál do svazkového kabelu.
+gui.item.computerActivated=K ovládání použij počítač z modu OpenComputers.
+
+tile.BundledController.name=Svazkový ovladač
+tile.BundledReceiver.name=Svazkový přijímač
+tile.BundledUniversalController.name=Univerzální svazkový ovladač
+tile.BundledAdvancedController.name=Pokročilý svazkový ovladač
+tile.BundledCrossingController.name=Svazkový ovladač přejezdu
+tile.DigitalController.name=Digitální ovladač
+tile.DigitalUniversalController.name=Digitální univerzální ovladač
+tile.DigitalCrossingController.name=Digitální ovladač přejezdů
+
+color.white=Bílá
+color.orange=Oranžová
+color.magenta=Purpurová
+color.light_blue=Světle modrá
+color.yellow=Žlutá
+color.lime=Limetková
+color.pink=Růžová
+color.gray=Šedá
+color.light_gray=Světle šedá
+color.cyan=Azurová
+color.purple=Fialová
+color.blue=Modrá
+color.brown=Hnědá
+color.green=Zelená
+color.red=Červená
+color.black=Černá
+
+side.south.1=Strana 1:
+side.north.2=Strana 2:
+side.east.3=Strana 3:
+side.west.4=Strana 4:
+
+message.at.coords=na
+message.controllerUpdatedWithStates=Ovladač aktualizován s návěstmi:
+message.controllerUpdatedWithNames=Ovladač aktualizován s názvy přijímačů:
+message.controllerUpdatedWithStatesAndNames=Ovladač aktualizován s návěstmi a názvy přijímačů:
+message.wrench.controllerPairedTo=§bTento ovladač je spárován s:
+message.wrench.receiverPairedTo=§bTento přijímač je spárován s:

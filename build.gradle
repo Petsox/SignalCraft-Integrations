@@ -55,7 +55,7 @@ dependencies {
 
     // quality of life line to simplify importing jars for experimental testing
     // compile fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'signalcraft:SignalCraft:1.7.10-0.99.5-BETA'
+    implementation 'signalcraft:SignalCraft:1.7.10-1.0'
 
     implementation 'mrtjp:ProjectRed-1.7.10-4.7.0pre12.95-dev'
     implementation "li.cil.oc:OpenComputers-MC1.7.10-1.8.5+ad76e2a-dev"

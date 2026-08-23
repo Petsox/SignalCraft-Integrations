@@ -15,6 +15,10 @@ gui.lightSignalAdvancedBundledCont.use=Depending on which Bundled Color senses a
 gui.lightSignalAdvancedBundledCont.use2=the State set for that color gets sent only to the paired
 gui.lightSignalAdvancedBundledCont.use3=receivers whose names are listed, comma separated, on that row.
 
+gui.lightSignalCrossingBundledCont.use=Depending on which Bundled Color senses a signal,
+gui.lightSignalCrossingBundledCont.use2=the Crossing gets activated or deactivated only for the paired
+gui.lightSignalCrossingBundledCont.use3=receivers whose names are listed, comma separated, on that row.
+
 gui.advancedBundledCont.setState=Set State
 gui.advancedBundledCont.on=on
 
@@ -25,6 +29,8 @@ gui.item.bundledReceiver.use=Outputs a Bundled Signal based on received Signal S
 gui.item.bundledAdvController.use=Use this to control specific receivers with Bundled Signal.
 
 gui.item.bundledUnivController.use=Activates specified Universal Receivers.
+
+gui.item.bundledCrossController.use=Activates specified Crossing Barriers.
 
 gui.item.digitalController.use=Driven by a computer it controls Signals, and much more.
 
@@ -40,6 +46,7 @@ tile.BundledController.name=Bundled Controller
 tile.BundledReceiver.name=Bundled Receiver
 tile.BundledUniversalController.name=Universal Bundled Controller
 tile.BundledAdvancedController.name=Advanced Bundled Controller
+tile.BundledCrossingController.name=Bundled Crossing Controller
 tile.DigitalController.name=Digital Controller
 tile.DigitalUniversalController.name=Digital Universal Controller
 tile.DigitalCrossingController.name=Digital Crossing Controller
