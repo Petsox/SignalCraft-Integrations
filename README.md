@@ -2,6 +2,8 @@
 
 This mod is an addon for [SignalCraft](https://github.com/Petsox) integrating it with other Minecraft mods. It requires SignalCraft to be installed, and adds extra blocks that let SignalCraft's signalling equipment communicate with the redstone/computer mods below. Each integration is only registered if the corresponding mod is detected, so this addon works fine even if you only have some of the supported mods installed.
 
+You can get it on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/signalcraft-integration)
+
 ## Supported mods
 
 - **[ProjectRed](https://www.curseforge.com/minecraft/mc-mods/projectred)** (Integration) — bundled-cable redstone controllers:
